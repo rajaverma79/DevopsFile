@@ -15,12 +15,11 @@ node ('Slave')
    }
    
   
-    /*
     stage("ExcuteSonarQubeReport")
    {
     sh "${mavenHome}/bin/mvn sonar:sonar"
    }
-   */
+   
    
    stage("UploadArtifactIntoNexus")
    {
