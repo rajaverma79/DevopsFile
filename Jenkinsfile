@@ -1,7 +1,8 @@
 node
 {
+    
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
-  def mavenHome = tool name: "Maven 3.6.3"
+     def mavenHome = tool name: "Maven 3.6.3"
 
   stage("CheckOutCode")
    {
@@ -13,8 +14,8 @@ node
    sh "${mavenHome}/bin/mvn clean package"
    }
    
-   /*
-   stage("ExcuteSonarQubeReport")
+  
+    stage("ExcuteSonarQubeReport")
    {
     sh "${mavenHome}/bin/mvn sonar:sonar"
    }
@@ -24,8 +25,8 @@ node
    sh "${mavenHome}/bin/mvn deploy"
    }
    
-   /*
-   stage("DeployApplicationIntoTomcat") 
+   
+    stage("DeployApplicationIntoTomcat") 
    {
      sshagent(['f84ccde4-9768-4e27-85e8-8daed07bbbb8']) 
      {
